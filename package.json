@@ -1,5 +1,5 @@
 {
-  "name": "whisperlab/serverless-pg-migrations",
+  "name": "@whisperlab/serverless-pg-migrations",
   "version": "1.0.1",
   "description": "Trigger Postgres migrations from AWS Lambda with Serverless ⚡️",
   "main": "index.js",
