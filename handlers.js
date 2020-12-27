@@ -10,9 +10,9 @@ const failure = response => ({
   body: JSON.stringify(response)
 });
 
-const handler = handlerName => (event, context, callback) => {
+const handler = (handlerName, config) => (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
-  const migration = new Migration(process.env.DATABASE_URL);
+  const migration = new Migration(process.env.DATABASE_URL, config);
 
   migration
     [handlerName]()
@@ -30,3 +30,5 @@ const handler = handlerName => (event, context, callback) => {
 module.exports.up = handler("up");
 
 module.exports.down = handler("down");
+
+module.exports.handler = handler;

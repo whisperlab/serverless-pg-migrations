@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const Umzug = require("umzug");
 
 module.exports = class Migration {
-  constructor(connectionString) {
+  constructor(connectionString, config) {
     this.connectionString = connectionString;
     this.close = this.init();
   }
@@ -13,7 +13,8 @@ module.exports = class Migration {
         max: 1,
         min: 0,
         idle: 5000
-      }
+      },
+      ...config
     });
 
     this.umzug = new Umzug({
