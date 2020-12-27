@@ -4,6 +4,7 @@ const Umzug = require("umzug");
 module.exports = class Migration {
   constructor(connectionString, config) {
     this.connectionString = connectionString;
+    this.config = config;
     this.close = this.init();
   }
 
@@ -14,7 +15,7 @@ module.exports = class Migration {
         min: 0,
         idle: 5000
       },
-      ...config
+      ...this.config
     });
 
     this.umzug = new Umzug({
